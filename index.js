@@ -81,11 +81,17 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
+function finalScore(inning, numOfInnings) {
+  let homeTeam = 0
+  let awayTeam = 0;
+  for (let i = 0; i < numOfInnings; i++) {
+    homeTeam = numOfInnings + inning;
+    awayTeam = numOfInnings + inning;
+  }
+  console.log(`home: ${homeTeam} away: ${awayTeam}`)
 
 }
+console.log(finalScore(inning(0, 3), 9))
 
 /* Task 4: 
 
