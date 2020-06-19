@@ -27,11 +27,14 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ * counter1 has count declared on the inside scope while counter2 
+ * has it declared on the outside of the scope 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *  * counter1 uses a closure because the count is inside the curley brackets
+
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ **when you want to have a seprate count declared for any other function youd use counter one
+ so it can be decarled somewhere else
 */
 
 // counter1 code
@@ -56,11 +59,13 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
+function inning(min, max) {
+  return Math.floor(
+    Math.random() * (max - min) + min
+  )
 
 }
+console.log(inning(0,3))
 
 /* Task 3: finalScore()
 
