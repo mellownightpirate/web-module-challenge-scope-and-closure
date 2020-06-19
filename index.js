@@ -2,24 +2,23 @@
 
 /**
  * ### Challenge `processFirstItem`
- * 
+ *
  * @instructions
  * Implement a higher-order function called `processFirstItem`.
  * It takes two arguments:
  * @param stringList an array of strings.
  * @param callback function that takes a string as its argument.
  * @returns the result of invoking `callback` with the FIRST element in `stringList`.
- * 
+ *
  * Example of usage of this higher-order function:
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
-*/
+ */
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+  return callback(stringList[0]);
 }
 
 // ⭐️ Example Challenge END ⭐️
-
 
 ///// M V P ///////
 
@@ -41,8 +40,8 @@ function processFirstItem(stringList, callback) {
 function counterMaker() {
   let count = 0;
   return function counter() {
-   return count++;
-  }
+    return count++;
+  };
 }
 
 const counter1 = counterMaker();
@@ -54,18 +53,15 @@ function counter2() {
   return count++;
 }
 
-
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(min, max) {
-  return Math.floor(
-    Math.random() * (max - min) + min
-  )
-
+function inning() {
+  let score = Math.floor(Math.random() * 3);
+  return score;
 }
-console.log(inning(0,3))
+// console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -79,19 +75,19 @@ finalScore(inning, 9) might return:
   "Away": 5,
 }
 
-*/ 
+*/
 
-function finalScore(inning, numOfInnings) {
-  let homeTeam = 0
-  let awayTeam = 0;
-  for (let i = 0; i < numOfInnings; i++) {
-    homeTeam = numOfInnings + inning;
-    awayTeam = numOfInnings + inning;
+function finalScore(callback, num) {
+  let final = { Home: 0, Away: 0 };
+  for (let i = 0; i < num; i++) {
+    final.Home += callback();
+    final.Away += callback();
   }
-  console.log(`home: ${homeTeam} away: ${awayTeam}`)
-
+  return final;
 }
-console.log(finalScore(inning(0, 3), 9))
+
+console.log(finalScore(inning, 9));
+console.log(finalScore(inning, 5));
 
 /* Task 4: 
 
@@ -114,8 +110,12 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback, innings) {
+  let final = { Home: 0, Away: 0 };
+  for (let i = 1; i <= innings; i++) {
+    final.Home += callback();
+    final.Away += callback();
+    console.log(`${i} inning: ${final.Home} - ${final.Away}`);
+  }
+  console.log(`final score: ${final.Home} - ${final.Away}`);
 }
-
-
